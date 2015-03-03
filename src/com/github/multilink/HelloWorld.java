@@ -1,4 +1,4 @@
-package server;
+package com.github.multilink;
 
 public class HelloWorld {
 
