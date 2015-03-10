@@ -1,4 +1,7 @@
 package com.github.multilink.server.module;
+
+import java.util.*;
+
 /*
  * Each "Device" class will represent a single connected device
  * All devices will be stored in a master list in SessionStorage.java
@@ -14,6 +17,8 @@ public class Device {
 	private double hardDisk_now = -1;
 	private double ram_max = -1;
 	private double ram_now = -1;
+	
+	private Map<String, Integer> token = new HashMap<String, Integer>();
 	
 	public Device(int _id, String _name){
 		id = _id;
