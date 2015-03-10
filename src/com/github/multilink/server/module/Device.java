@@ -1,5 +1,8 @@
 package com.github.multilink.server.module;
-
+/*
+ * 
+ * 
+ */
 public class Device {
 	
 	private int id;
@@ -7,8 +10,8 @@ public class Device {
 	private String description = "<not set>";
 	
 	private double battery = -1;
-	private double hard_max = -1;
-	private double hard_now = -1;
+	private double hardDisk_max = -1;
+	private double hardDisk_now = -1;
 	private double ram_max = -1;
 	private double ram_now = -1;
 	
@@ -50,19 +53,19 @@ public class Device {
 	}
 
 	public double getHard_max() {
-		return hard_max;
+		return hardDisk_max;
 	}
 
 	public void setHard_max(double hard_max) {
-		this.hard_max = hard_max;
+		this.hardDisk_max = hard_max;
 	}
 
 	public double getHard_now() {
-		return hard_now;
+		return hardDisk_now;
 	}
 
 	public void setHard_now(double hard_now) {
-		this.hard_now = hard_now;
+		this.hardDisk_now = hard_now;
 	}
 
 	public double getRam_max() {
