@@ -1,7 +1,7 @@
 package com.github.multilink.server.module;
 /*
- * 
- * 
+ * Each "Device" class will represent a single connected device
+ * All devices will be stored in a master list in SessionStorage.java
  */
 public class Device {
 	
