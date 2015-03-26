@@ -7,8 +7,8 @@ import com.github.multilink.server.module.Device;
 
 public class GeneralStorage {
 
-	public List<Device> devices = new ArrayList<Device>();
-	public List<Session> sessions = new ArrayList<Session>();
+	public static List<Device> devices = new ArrayList<Device>();
+	public static List<Session> sessions = new ArrayList<Session>();
 	
 	
 	

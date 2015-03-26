@@ -8,9 +8,7 @@ import com.github.multilink.server.utils.EtcUtils;
 import com.github.multilink.server.utils.TimeUtils;
 
 public class Session {
-	
-	private static List<Session> sessions = new ArrayList<Session>();
-	
+		
 	private int sid; //unique id for session
 	private long expire;
 	private List<String> permission = new ArrayList<String>();
@@ -50,7 +48,7 @@ public class Session {
 	 * 
 	 */
 	public boolean kill(){
-		return sessions.remove(this);
+		return GeneralStorage.sessions.remove(this);
 	}
 	
 	/**renew the current session
@@ -58,7 +56,7 @@ public class Session {
 	*  returns: If the session is renewable
 	*/
 	public boolean renew(long validfor){
-		if (permission.contains("multilink.renew")){
+		//if (permission.contains("multilink.renew")){
 			if (validfor > ConfigStorage.getMaxSessionTime()){
 				validfor = ConfigStorage.getMaxSessionTime();
 			}
@@ -66,9 +64,9 @@ public class Session {
 				expire = TimeUtils.getCurrentUnix() + validfor;
 			}
 			return true;
-		} else {
-			return false;
-		}
+		//} else {
+		//	return false;
+		//}
 	}
 	
 	
@@ -91,7 +89,7 @@ public class Session {
 	}
 	
 	public static boolean hasSession(int id){
-		for (Session session : sessions){
+		for (Session session : GeneralStorage.sessions){
 			if (session.device.getId() == id){
 				return true;
 			}
