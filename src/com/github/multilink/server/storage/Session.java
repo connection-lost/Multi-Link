@@ -4,19 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.github.multilink.server.module.Device;
+import com.github.multilink.server.utils.EtcUtils;
 import com.github.multilink.server.utils.TimeUtils;
 
 public class Session {
 	
 	private static List<Session> sessions = new ArrayList<Session>();
 	
-	private int sid;
+	private int sid; //unique id for session
 	private long expire;
 	private List<String> permission = new ArrayList<String>();
 	
 	private Device device;
 	
-	public Session(int sid_, long validfor, List<String> permission_, Device device_){
+	protected Session(int sid_, long validfor, List<String> permission_, Device device_){
 		sid = sid_;
 		//validfor sanity check
 		if (validfor > ConfigStorage.getMaxSessionTime()){
@@ -81,7 +82,13 @@ public class Session {
 	
 	
 	
-	
+	public static Session newSession(Device device){
+		int sid = EtcUtils.random.nextInt(Integer.MAX_VALUE);
+		long validfor = ConfigStorage.getInitSessionTime(device);
+		List<String> permission = ConfigStorage.getPermission(device);
+		Session session = new Session(sid, validfor, permission, device);
+		return session;
+	}
 	
 	public static boolean hasSession(int id){
 		for (Session session : sessions){
