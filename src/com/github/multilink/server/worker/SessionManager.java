@@ -17,6 +17,14 @@ public class SessionManager {
 		return session;
 	}
 	
-	
+	public boolean endSession(Device device){
+		for (Session session : GeneralStorage.sessions){
+			if (session.getDevice() == device){
+				session.kill();
+				return true;
+			}
+		}
+		return false;
+	}
 	
 }
