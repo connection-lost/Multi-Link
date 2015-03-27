@@ -6,18 +6,18 @@ import com.github.multilink.server.storage.Session;
 
 public class SessionManager {
 
-	public boolean isActive(int deviceid){
+	public static boolean isActive(int deviceid){
 		if (Session.hasSession(deviceid)) return true;
 		else return false;
 	}
 	
-	public Session createSession(Device device){
+	public static Session createSession(Device device){
 		Session session = Session.newSession(device);
 		GeneralStorage.sessions.add(session);
 		return session;
 	}
 	
-	public boolean endSession(Device device){
+	public static boolean endSession(Device device){
 		for (Session session : GeneralStorage.sessions){
 			if (session.getDevice() == device){
 				session.kill();
