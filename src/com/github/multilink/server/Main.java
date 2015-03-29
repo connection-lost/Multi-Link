@@ -20,7 +20,7 @@ public class Main {
 	}
 	
 	public static void test(){
-		Device testdevice = new Device(0, "TestPhone");
+		Device testdevice = Device.newDevice("test");
 		testdevice.setBattery(100);
 		
 		System.out.println(SessionManager.createSession(testdevice).toString());
