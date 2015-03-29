@@ -13,9 +13,6 @@ public class GeneralStorage {
 	
 	
 	
-	public static Device newDevice(String name){
-		Device device = new Device(EtcUtils.random.nextInt(Integer.MAX_VALUE), name);
-		return device;
-	}
+
 	
 }
