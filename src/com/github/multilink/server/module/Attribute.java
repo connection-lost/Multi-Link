@@ -33,19 +33,31 @@ public class Attribute {
 		this.name = name;
 	}
 	public int getInt() {
-		return attributeint;
+		if (type == 0) {
+			return attributeint;
+		} else {
+			return 0;
+		}
 	}
 	public void setInt(int attributeint) {
 		this.attributeint = attributeint;
 	}
 	public double getDouble() {
-		return attributedouble;
+		if (type == 1) {
+			return attributedouble;
+		} else {
+			return 0;
+		}
 	}
 	public void setDouble(double attributedouble) {
 		this.attributedouble = attributedouble;
 	}
 	public String getString() {
-		return attributestring;
+		if (type == 0) {
+			return attributestring;
+		} else {
+			return "";
+		}
 	}
 	public void setString(String attributestring) {
 		this.attributestring = attributestring;
