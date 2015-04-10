@@ -21,7 +21,6 @@ public class Main {
 	
 	public static void test(){
 		Device testdevice = Device.newDevice("test");
-		testdevice.setBattery(100);
 		
 		System.out.println(SessionManager.createSession(testdevice).toString());
 		System.out.println(SessionManager.endSession(testdevice));
