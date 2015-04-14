@@ -15,7 +15,7 @@ public class Device {
 	private String description = "<not set>";
 	
 	
-	private Map<String, Integer> token = new HashMap<String, Integer>();
+	private Map<String, Integer> token = new HashMap<String, Integer>(); // what's token? 
 	
 	public Device(int _id, String _name){
 		id = _id;

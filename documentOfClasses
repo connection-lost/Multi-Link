@@ -1,0 +1,36 @@
+(Know nothing about how to document correctly, but use this as a temporary documentation of each class including what classes and each method do)
+( using emacs org-mode )
+* module:
+** Attribute:
+
+** Device:
+
+* storage:
+
+** ConfigStorage:
+
+** GeneralStorage:
+
+** Serializer:
+
+** Session:
+
+* utils:
+
+** EtcUtils:
+
+** TimeUtils:
+
+* viewer:
+
+** ViewManager
+
+** ViewPacker
+
+* worker:
+
+** CommandAcceptor
+
+** SessionManager
+
+** StatusModifyer

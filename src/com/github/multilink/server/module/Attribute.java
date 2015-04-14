@@ -39,6 +39,7 @@ public class Attribute {
 			return 0;
 		}
 	}
+	// consider the case: a is instantiated as Attribute with type 2, setInt will set attributeint of a. But getInt() won't return the attributeint set by setInt.
 	public void setInt(int attributeint) {
 		this.attributeint = attributeint;
 	}
