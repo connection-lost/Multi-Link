@@ -1,17 +1,24 @@
 package com.github.multilink.server.storage;
 
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 import com.github.multilink.server.module.Device;
 
 public class GeneralStorage {
 	/**
-	 *  Map<id, item>.
+	 *  Assumption: Every Session is assigned with a device, and every device might not belong to a session.
+	 *  Rep Inv: 
+	 *  for ( int id : sessions.keyValue() ): sessions.get(id).getId() == id;
+	 *  for ( int id : devices.keyValue() ): devices.get(id).getId() == id;
+	 *  for ( Session session : sessions.value() ): devices.containsKey(session.getDeviceId()) == true; 
 	 */
+	private void checkRep(){
+		init();
+		  for ( int id : sessions.keySet() ) assert(sessions.get(id).getId() == id);
+		   for ( int id : devices.keySet() ) assert(devices.get(id).getId() == id);
+		   for ( Session session : sessions.values() ) assert(true == devices.containsKey(session.getDeviceId())); 
+	}
 	private static Map<Integer, Device> devices; // Use map to retrieve item for performance 
 	private static Map<Integer, Session> sessions;
 	/**
@@ -20,6 +27,13 @@ public class GeneralStorage {
 	private static void init(){
 		if (devices == null) devices  = new HashMap<Integer, Device>();
 		if (sessions == null) sessions = new HashMap<Integer, Session>();
+	}
+	
+	public static boolean hasDevice(Device device){
+		return devices.containsKey(device.getId());
+	}
+	public static boolean hasSession(Session session){
+		return sessions.containsKey(session.getId());
 	}
 	// TO be revised for performance reason
 	public static Session getSessionByDeviceId(int deviceId){
@@ -106,6 +120,11 @@ public class GeneralStorage {
 		init();
 		if (session == null || sessions.containsKey(session.getId())) return false;
 		sessions.put(session.getId(), session);
+		int deviceId = session.getDeviceId();
+		Device d = session.getDevice();
+		devices.put(deviceId, d); 
+		
+		// add device associated with session.
 		//addToReference(session.getDeviceId(), session.getId());
 		return true;
 	}

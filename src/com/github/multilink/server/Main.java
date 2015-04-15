@@ -1,6 +1,8 @@
 package com.github.multilink.server;
 
 import com.github.multilink.server.module.Device;
+import com.github.multilink.server.storage.GeneralStorage;
+import com.github.multilink.server.storage.Session;
 import com.github.multilink.server.worker.SessionManager;
 
 public class Main {
@@ -21,8 +23,7 @@ public class Main {
 	
 	public static void test(){
 		Device testdevice = Device.newDevice("test");
-		
-		System.out.println(SessionManager.createSession(testdevice).toString());
+		Session s = SessionManager.createSession(testdevice);
 		System.out.println(SessionManager.endSession(testdevice));
 		System.out.println(SessionManager.endSession(testdevice));
 		
