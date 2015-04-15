@@ -14,9 +14,11 @@ public class Session {
 	private List<String> permission = new ArrayList<String>();
 	
 	private Device device;
+	private int did; // unique id for device attached to this session.
 	
 	protected Session(int sid_, long validfor, List<String> permission_, Device device_){
 		sid = sid_;
+		did = device_.getId();
 		//validfor sanity check
 		if (validfor > ConfigStorage.getMaxSessionTime()){
 			validfor = ConfigStorage.getMaxSessionTime();
@@ -25,8 +27,10 @@ public class Session {
 		permission = permission_;
 		device = device_;
 	}
-
-	public int getSid() {
+	public int getDeviceId(){
+		return did;
+	}
+	public int getId() {
 		return sid;
 	}
 
@@ -42,19 +46,22 @@ public class Session {
 		return device;
 	}
 	
-	/**Kill the current session
-	 * requires: none
-	 * returns: killed or not
+	/**
+	 * kill(): kill the current session.
+	 * 
+	 * @returns: true if this session is killed or removed from GeneralStorage, false otherwise
 	 * 
 	 */
 	public boolean kill(){
-		return GeneralStorage.sessions.remove(this);
+		return GeneralStorage.removeSession(this);
 	}
 	
-	/**renew the current session
-	*  requires: How long to renew
-	*  returns: If the session is renewable
-	*/
+	/**
+	 * renew(long): extend expire time for current session.
+	 * @param: long validfor, the time length to be extended.
+	 * @returns: True if the session is renewable, false otherwise.
+	 */
+	
 	public boolean renew(long validfor){
 		//if (permission.contains("multilink.renew")){
 			if (validfor > ConfigStorage.getMaxSessionTime()){
@@ -68,35 +75,19 @@ public class Session {
 		//	return false;
 		//}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	public static Session newSession(Device device){
-		int sid = EtcUtils.random.nextInt(Integer.MAX_VALUE);
+		int sid = EtcUtils.random.nextInt(Integer.MAX_VALUE); // Might want to change because 
 		long validfor = ConfigStorage.getInitSessionTime(device);
 		List<String> permission = ConfigStorage.getPermission(device);
 		Session session = new Session(sid, validfor, permission, device);
 		return session;
 	}
 	
-	public static boolean hasSession(int id){
-		for (Session session : GeneralStorage.sessions){
-			if (session.device.getId() == id){
-				return true;
-			}
-		}
+	public static boolean hasSession(int deviceId){
+		Session s = GeneralStorage.getSessionByDeviceId(deviceId);
+		if (s != null) return true;
 		return false;
 	}
-	
-	
 	
 }

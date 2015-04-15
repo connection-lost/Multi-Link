@@ -6,7 +6,7 @@ public class TimeUtils {
 	
 	public static long getCurrentUnix(){
 		//todo done
-		return 0;
+		return System.currentTimeMillis();
 	}
 
 }

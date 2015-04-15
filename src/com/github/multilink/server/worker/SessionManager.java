@@ -13,18 +13,15 @@ public class SessionManager {
 	
 	public static Session createSession(Device device){
 		Session session = Session.newSession(device);
-		GeneralStorage.sessions.add(session);
+		GeneralStorage.addSession(session);
 		return session;
 	}
 	
 	public static boolean endSession(Device device){
-		for (Session session : GeneralStorage.sessions){
-			if (session.getDevice() == device){
-				session.kill();
-				return true;
-			}
-		}
-		return false;
+		int deviceId = device.getId();
+		Session s = GeneralStorage.getSessionByDeviceId(deviceId);
+		if (s == null) return false;
+		return s.kill();
 	}
 	
 }
