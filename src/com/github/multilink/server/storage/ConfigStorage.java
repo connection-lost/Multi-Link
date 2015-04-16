@@ -6,9 +6,6 @@ import com.github.multilink.server.module.Device;
 
 public class ConfigStorage {
 
-	
-	
-	
 	public static long getMaxSessionTime(){
 		//todo check
 		return Long.MAX_VALUE;

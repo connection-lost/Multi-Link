@@ -15,9 +15,9 @@ public class GeneralStorage {
 	 */
 	private void checkRep(){
 		init();
-		  for ( int id : sessions.keySet() ) assert(sessions.get(id).getId() == id);
-		   for ( int id : devices.keySet() ) assert(devices.get(id).getId() == id);
-		   for ( Session session : sessions.values() ) assert(true == devices.containsKey(session.getDeviceId())); 
+		for ( int id : sessions.keySet() ) assert(sessions.get(id).getId() == id);
+		for ( int id : devices.keySet() ) assert(devices.get(id).getId() == id);
+		for ( Session session : sessions.values() ) assert(true == devices.containsKey(session.getDeviceId())); 
 	}
 	private static Map<Integer, Device> devices; // Use map to retrieve item for performance 
 	private static Map<Integer, Session> sessions;

@@ -13,12 +13,6 @@ public class Main {
 		System.out.println("Sida is Cute");
 		
 		test();
-		
-		
-		
-		
-		
-		
 	}
 	
 	public static void test(){
@@ -26,8 +20,6 @@ public class Main {
 		Session s = SessionManager.createSession(testdevice);
 		System.out.println(SessionManager.endSession(testdevice));
 		System.out.println(SessionManager.endSession(testdevice));
-		
-		
 	}
 	
 }

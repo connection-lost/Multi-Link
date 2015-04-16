@@ -14,7 +14,6 @@ public class Device {
 	private String name;
 	private String description = "<not set>";
 	
-	
 	private Map<String, Integer> token = new HashMap<String, Integer>(); // what's token? 
 	
 	public Device(int _id, String _name){
@@ -46,10 +45,6 @@ public class Device {
 		this.description = description;
 	}
 
-
-	
-	
-	
 	public static Device newDevice(String name){
 		Device device = new Device(EtcUtils.random.nextInt(Integer.MAX_VALUE), name);
 		return device;
