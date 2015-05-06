@@ -1,7 +1,6 @@
 package com.github.multilink.server;
 
 import com.github.multilink.server.module.Device;
-import com.github.multilink.server.storage.GeneralStorage;
 import com.github.multilink.server.storage.Session;
 import com.github.multilink.server.worker.SessionManager;
 
