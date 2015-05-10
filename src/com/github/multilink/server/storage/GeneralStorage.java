@@ -79,7 +79,7 @@ public class GeneralStorage {
 		 * 
 		 */
 		private static final long serialVersionUID = 4194477461792773350L;
-		public static final String DEVICE_MISSING = "Miss device";
+		public static final String DEVICE_MISSING = "Missing device";
 		public static final String REFERENCE_NULL = "Item in Reference is NULL";
 		public GeneralStorageException(String args){
 			super(args);

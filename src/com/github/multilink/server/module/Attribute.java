@@ -1,12 +1,21 @@
 package com.github.multilink.server.module;
 
+import java.net.InetAddress;
+
 public class Attribute {
 
+	private InetAddress ip;
+	private int port;
+	
 	private String name;
 	private int attributeint; // 0
 	private double attributedouble; // 1
 	private String attributestring; // 2
 	private int type;
+	
+	public Attribute(InetAddress ip, int port){
+		this.ip = ip; this.port = port;
+	}
 	
 	public Attribute (String name, int attint){
 		this.name = name;
@@ -39,7 +48,6 @@ public class Attribute {
 			return 0;
 		}
 	}
-	// consider the case: a is instantiated as Attribute with type 2, setInt will set attributeint of a. But getInt() won't return the attributeint set by setInt.
 	public void setInt(int attributeint) {
 		this.attributeint = attributeint;
 	}

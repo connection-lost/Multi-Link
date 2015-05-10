@@ -1,4 +1,4 @@
-package com.github.multilink.client;
+package com.github.multilink.client.utils;
 import com.sun.jna.Library;
 import com.sun.jna.Native;
 import com.sun.jna.platform.win32.WinBase.MEMORYSTATUSEX;
@@ -7,4 +7,5 @@ import com.sun.jna.platform.win32.WinBase.MEMORYSTATUSEX;
 public interface Kernel32 extends Library {
 	public Kernel32 INSTANCE = (Kernel32) Native.loadLibrary("kernel32", Kernel32.class);
 	public boolean GlobalMemoryStatusEx(MEMORYSTATUSEX result);
+	public boolean GetSystemPowerStatus(SYSTEM_POWER_STATUS result);
 }

@@ -1,4 +1,4 @@
-package com.github.multilink.client;
+package com.github.multilink.client.utils;
 import com.sun.jna.Library;
 import com.sun.jna.Native;
 // User32: for Windows Client, please write all function called in User32 here.

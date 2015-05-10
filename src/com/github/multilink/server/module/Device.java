@@ -1,7 +1,5 @@
 package com.github.multilink.server.module;
 
-import java.util.*;
-
 import com.github.multilink.server.utils.EtcUtils;
 
 /*
@@ -10,11 +8,10 @@ import com.github.multilink.server.utils.EtcUtils;
  */
 public class Device {
 	
+	private Attribute data;
 	private int id;
 	private String name;
 	private String description = "<not set>";
-	
-	private Map<String, Integer> token = new HashMap<String, Integer>(); // what's token? 
 	
 	public Device(int _id, String _name){
 		id = _id;
